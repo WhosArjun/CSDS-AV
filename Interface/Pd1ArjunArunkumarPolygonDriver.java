@@ -1,3 +1,4 @@
+package Interface;
 import java.util.Scanner;
 
 public class Pd1ArjunArunkumarPolygonDriver{
@@ -31,7 +32,7 @@ public class Pd1ArjunArunkumarPolygonDriver{
         double q4 = input.nextDouble();
         double diagonal = input.nextDouble();
 
-        polygons[4] = new Quadrilateral(q1, q2, q3, q4, diagonal);
+        polygons[3] = new Quadrilateral(q1, q2, q3, q4, diagonal);
 
 
         System.out.println("Enter the width and length of your rectangle");
@@ -40,6 +41,36 @@ public class Pd1ArjunArunkumarPolygonDriver{
 
         polygons[4] = new Rectangle(length, width);
 
+
+        System.out.println("Enter the side of the square");
+        double side = input.nextDouble();
+
+        polygons[5] = new Square(side);
+
+        System.out.println("Enter the side of the pentagon");
+        double pentagonSide = input.nextDouble();
+
+        polygons[6] = new Pentagon(pentagonSide);
+
+
+        System.out.println("Enter the side of the hexagon");
+        double hexagonSide = input.nextDouble();
+
+        polygons[7] = new Hexagon(hexagonSide);
+
+        System.out.println("Enter the side of the Octagon");
+        double octagonSide = input.nextDouble();
+
+        polygons[8] = new Octagon(octagonSide);
+
+        for (Polygon polygon : polygons){
+            System.out.println("Area : " + polygon.area());
+            System.out.println("Perimeter : " + polygon.perimeter());
+            System.out.println();
+        }
+
+
+        input.close();
     }
 }
 
@@ -212,4 +243,3 @@ class Quadrilateral implements Polygon{
         }
     }
 
-}
