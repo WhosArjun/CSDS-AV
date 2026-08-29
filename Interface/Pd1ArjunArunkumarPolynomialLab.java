@@ -47,6 +47,9 @@ public class Pd1ArjunArunkumarPolynomialLab{
         Polynomial p5 = p4.derivative();
         System.out.println("p5(x) = " + p5);
 
+        Polynomial p6 = p4.integral();
+        System.out.println("p6(x) = " + p6);
+
         Polynomial clone = new ArrayBasedPolynomial(p5);
         System.out.println("clone(x) = " + clone);
 
@@ -63,6 +66,7 @@ interface Polynomial{
     Polynomial plus(Polynomial g); //Add two polynomials, and return their sum
     Polynomial minus(Polynomial g); //Subtract two polynomials, and return their difference
     Polynomial derivative();
+    Polynomial integral();
 }
 
 
@@ -148,6 +152,28 @@ class ArrayBasedPolynomial implements Polynomial{
         }
         return new ArrayBasedPolynomial(differentiatedPolynomial);
 
+    }
+
+    public Polynomial integral(){
+        double[] integratedPolynomial = new double[coefficients.length+1];
+        for(int i = integratedPolynomial.length-1; i>=0; i--){
+            if(i==0){
+                integratedPolynomial[i] = 0;
+            }
+            else{
+                integratedPolynomial[i] = coefficients[i-1];
+            }
+        }
+        for(int k = 0; k<integratedPolynomial.length; k++){
+            if(k==0){
+                integratedPolynomial[k] = 0;
+            }
+            else{
+                integratedPolynomial[k] = integratedPolynomial[k]/k;
+            }
+        }
+
+        return new ArrayBasedPolynomial(integratedPolynomial);
     }
     
 
