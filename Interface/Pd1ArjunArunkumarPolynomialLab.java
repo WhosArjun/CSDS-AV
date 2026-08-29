@@ -44,11 +44,14 @@ public class Pd1ArjunArunkumarPolynomialLab{
         Polynomial p4 = p.minus(p3);
         System.out.println("p4(x) = " + p4);
 
-        Polynomial clone = new ArrayBasedPolynomial(p4);
+        Polynomial p5 = p4.differentiate();
+        System.out.println("p5(x) = " + p5);
+
+        Polynomial clone = new ArrayBasedPolynomial(p5);
         System.out.println("clone(x) = " + clone);
 
-        System.out.println("p4(0) = " + p4.evaluate(0));
-        System.out.println("p3(0) = " + p3.evaluate(6));
+        System.out.println("p5(0) = " + p5.evaluate(0));
+        System.out.println("p5(1) = " + p5.evaluate(1));
     }
 }
 
@@ -59,6 +62,7 @@ interface Polynomial{
     double evaluate(double x); //evalute the polynomial at a given value of x
     Polynomial plus(Polynomial g); //Add two polynomials, and return their sum
     Polynomial minus(Polynomial g); //Subtract two polynomials, and return their difference
+    Polynomial differentiate();
 }
 
 
@@ -132,6 +136,20 @@ class ArrayBasedPolynomial implements Polynomial{
         return new ArrayBasedPolynomial(newCoefficients);
     }
 
+    public Polynomial differentiate(){
+        double[] differentiatedPolynomial = new double[coefficients.length - 1];
+        int j = 1;
+        for(int i = 0; i<differentiatedPolynomial.length; i++){
+            differentiatedPolynomial[i] = coefficients[j];
+            j++;
+        }
+        for(int k = 0; k<differentiatedPolynomial.length; k++){
+            differentiatedPolynomial[k] = differentiatedPolynomial[k] * (k+1);
+        }
+        return new ArrayBasedPolynomial(differentiatedPolynomial);
+
+    }
+    
 
     public String toString(){
         String polynomialOutput = "";
@@ -156,5 +174,6 @@ class ArrayBasedPolynomial implements Polynomial{
         }
         return polynomialOutput;
     }
+
 }
 
