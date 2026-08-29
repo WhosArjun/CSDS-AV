@@ -33,8 +33,20 @@ public class Pd1ArjunArunkumarPolynomialLab{
         Polynomial p2 = new ArrayBasedPolynomial(c1);
         System.out.println("p2(x) = " + p2);
 
-        //Polynomial p3 = new ArrayBasedPolynomial(-4,-1);
-        //System.out.println("p3(x) = " + p3);
+        Polynomial p3 = new ArrayBasedPolynomial(-4,1);
+        System.out.println("p3(x) = " + p3);
+
+        Polynomial p = p1.plus(p2).plus(p2);
+        System.out.println("p(x) = " + p);
+
+        Polynomial p4 = p.minus(p3);
+        System.out.println("p4(x) = " + p4);
+
+        Polynomial clone = new ArrayBasedPolynomial(p4);
+        System.out.println("clone(x) = " + clone);
+
+        System.out.println("p4(0) = " + p4.evaluate(0));
+        System.out.println("p3(0) = " + p3.evaluate(6));
     }
 }
 
@@ -54,11 +66,22 @@ class ArrayBasedPolynomial implements Polynomial{
     public ArrayBasedPolynomial(double[] coefficients){
         this.coefficients = coefficients;
     }
+    public ArrayBasedPolynomial(int coeff, int exp){
+        coefficients = new double[exp + 1];
+        coefficients[exp] = coeff;
+    }
 
+    //for the clone call this is an additional structure capable of cloning
+    public ArrayBasedPolynomial(Polynomial polynomial){
+        coefficients = new double[polynomial.getDegree()+1];
+        for(int i = 0; i<=polynomial.getDegree(); i++){
+            coefficients[i] = polynomial.getCoefficient(i);
+        }
+    }
     public int getDegree(){
         return coefficients.length - 1;
     }
-
+    
     public double getCoefficient(int nth){
         return coefficients[nth];
     }
@@ -79,10 +102,10 @@ class ArrayBasedPolynomial implements Polynomial{
             if(i<=getDegree() && i<= g.getDegree()){
                 newCoefficients[i] = getCoefficient(i) + g.getCoefficient(i);
             }
-            else if (i>=getDegree()){
+            else if (i<=getDegree()){
                 newCoefficients[i] = getCoefficient(i);
             }
-            else if (i>=g.getDegree()){
+            else if (i<=g.getDegree()){
                 newCoefficients[i] = g.getCoefficient(i);
             }
         }
@@ -97,35 +120,39 @@ class ArrayBasedPolynomial implements Polynomial{
             if(i<=getDegree() && i<= g.getDegree()){
                 newCoefficients[i] = getCoefficient(i) - g.getCoefficient(i);
             }
-            else if(i>=getDegree()){
+            else if(i<=getDegree()){
                 newCoefficients[i] = getCoefficient(i);
             }
-            else if(i>=g.getDegree()){
+            else if(i<=g.getDegree()){
                 newCoefficients[i] = -g.getCoefficient(i);
             }
         }
         return new ArrayBasedPolynomial(newCoefficients);
     }
 
+
     public String toString(){
         String polynomialOutput = "";
-        for(int i = 0; i<coefficients.length; i++){
-            polynomialOutput += coefficients[i];
-
-            if(i==1){
-                polynomialOutput += "x";
-            }
-
-            if(i>1){
-                polynomialOutput += "x^" + i;
-            }
-
-            if(i<coefficients.length-1){
-                polynomialOutput += " + ";
+        for(int i = coefficients.length - 1; i >= 0; i--){
+            if(coefficients[i] != 0){
+                if(coefficients[i] > 0 && polynomialOutput.length() > 0){
+                    polynomialOutput += " + ";
+                }
+                if(coefficients[i] < 0){
+                    polynomialOutput += " - ";
+                }
+                if(i == 0){
+                    polynomialOutput += Math.abs(coefficients[i]);
+                }
+                else if(i == 1){
+                    polynomialOutput += Math.abs(coefficients[i]) + "x^1";
+                }
+                else{
+                    polynomialOutput += Math.abs(coefficients[i]) + "x^" + i;
+                }
             }
         }
         return polynomialOutput;
-
     }
 }
 
