@@ -44,7 +44,7 @@ public class Pd1ArjunArunkumarPolynomialLab{
         Polynomial p4 = p.minus(p3);
         System.out.println("p4(x) = " + p4);
 
-        Polynomial p5 = p4.differentiate();
+        Polynomial p5 = p4.derivative();
         System.out.println("p5(x) = " + p5);
 
         Polynomial clone = new ArrayBasedPolynomial(p5);
@@ -62,7 +62,7 @@ interface Polynomial{
     double evaluate(double x); //evalute the polynomial at a given value of x
     Polynomial plus(Polynomial g); //Add two polynomials, and return their sum
     Polynomial minus(Polynomial g); //Subtract two polynomials, and return their difference
-    Polynomial differentiate();
+    Polynomial derivative();
 }
 
 
@@ -136,7 +136,7 @@ class ArrayBasedPolynomial implements Polynomial{
         return new ArrayBasedPolynomial(newCoefficients);
     }
 
-    public Polynomial differentiate(){
+    public Polynomial derivative(){
         double[] differentiatedPolynomial = new double[coefficients.length - 1];
         int j = 1;
         for(int i = 0; i<differentiatedPolynomial.length; i++){
