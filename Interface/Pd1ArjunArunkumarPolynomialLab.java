@@ -6,17 +6,19 @@ Purpose: create an interface and class to represent simple polynomials
 Mistakes made:
 - understanding what an interface was and how to implement the Polynomial object
 - logic with printing out the polynomials through the toString() method
-- not being able to efficiently come up with solutions for the plus() and differentiate() methods
+- not being able to efficiently think about how to create the other 2 constructors
 
 
 How I feel about this programming experience: 
-This program greatly strengthened my understanding of inheritance and interface concepts, along with
-improved my java and refreshed me after a long summer since CSA. I struggled just a bit
-in the lab because I was rusty on my array algo.
+This program greatly strengthed by data structures skills, and helped me improve on past Java skills. This was a particularly interesting lab because of its many complex strategies
+and implications in order to solve problems. This was very hard for me, but I was able to keep on learning, I kept mapping concepts out on paper and pondered a lot. Overall challenging
+experience.
 
 
 What I Learned: 
-- using least classes/repetition as possible
+- Interfaces
+- Constructors with multiple methods and logic
+- Using objects in various ways 
 
 		
 ****************************************************/
