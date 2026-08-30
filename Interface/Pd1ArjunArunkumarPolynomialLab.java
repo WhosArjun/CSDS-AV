@@ -7,12 +7,14 @@ Mistakes made:
 - understanding what an interface was and how to implement the Polynomial object
 - logic with printing out the polynomials through the toString() method
 - not being able to efficiently think about how to create the other 2 constructors
+- the concept for the integral method, and figuring out how to replace the constant value of C as I have never dealt with an integral before
+
 
 
 How I feel about this programming experience: 
-This program greatly strengthed by data structures skills, and helped me improve on past Java skills. This was a particularly interesting lab because of its many complex strategies
-and implications in order to solve problems. This was very hard for me, but I was able to keep on learning, I kept mapping concepts out on paper and pondered a lot. Overall challenging
-experience.
+This program enhanced my data structure skills, and sharpened my brain to think of solutions to various implementations of concepts. Integrals and Derivates are concepts
+I have never thought to explore before, as I have just started CALC BC. I learned about these concepts, and then applied what I learned to create solutions to different polynomials.
+I really love math and this program allowed me to showcase mutliple solutions for implementations on math based topics.
 
 
 What I Learned: 
