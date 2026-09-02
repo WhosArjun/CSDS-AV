@@ -16,11 +16,28 @@ This program enhanced my data structure skills, and sharpened my brain to think 
 I have never thought to explore before, as I have just started CALC BC. I learned about these concepts, and then applied what I learned to create solutions to different polynomials.
 I really love math and this program allowed me to showcase mutliple solutions for implementations on math based topics.
 
+OUTPUT : 
+p1(x) = 4.0x^3 + 3.0x^2 + 1.0
+p2(x) =  - 5.0x^1 - 2.0
+p3(x) =  - 4.0x^1
+p(x) = 4.0x^3 + 3.0x^2 - 10.0x^1 - 3.0
+p4(x) = 4.0x^3 + 3.0x^2 - 6.0x^1 - 3.0
+p5(x) = 12.0x^2 + 6.0x^1 - 6.0
+p6(x) = 1.0x^4 + 1.0x^3 - 3.0x^2 - 3.0x^1
+clone(x) = 12.0x^2 + 6.0x^1 - 6.0
+p5(0) = -6.0
+p5(1) = 12.0
+
 
 What I Learned: 
 - Interfaces
 - Constructors with multiple methods and logic
 - Using objects in various ways 
+
+
+EDGE CASES : 
+If all the coefficients of a polynomial are 0.
+Another edge case is if a polynomial has a degree of 0, and the coefficient is 0.
 
 		
 ****************************************************/
@@ -216,4 +233,9 @@ p6(x) = 1.0x^4 + 1.0x^3 - 3.0x^2 - 3.0x^1
 clone(x) = 12.0x^2 + 6.0x^1 - 6.0
 p5(0) = -6.0
 p5(1) = 12.0
+
+
+EDGE CASES : 
+Some of the edge cases are if a polynomial has all coefficients of 0. 
+Another edge case is, if a polynomial has a degree of 0, and the coefficient is 0.
 */
