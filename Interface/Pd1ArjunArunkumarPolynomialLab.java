@@ -36,9 +36,18 @@ What I Learned:
 
 
 EDGE CASES : 
-If all the coefficients of a polynomial are 0.
-Another edge case is if a polynomial has a degree of 0, and the coefficient is 0.
+1. All coefficients are 0, the toString skips every coefficient because they're all zero.
+   0x^2 + 0x + 0, print nothing instead of p(x) = 0
 
+2. Derivative of a constant polynomial, the derivate should be 5' = 0, but the actual output is p'(x) =
+  proram doesn't crash but it produces an incorrect/empty representation.
+
+3. Derivative of a zero plynomial, output is p'(x) =, but the actual output should be 0.
+
+4. Substracting a polynomial from itself, the output is p - p =
+    my minus() method correctly creates {0,0,0} but my toString() method can't display the zero poylnomial
+
+5. Negative exponent in my constructor, it results in an indexOutOfBoundsException. Because the array index's cannot be negative.
 		
 ****************************************************/
 
@@ -236,6 +245,16 @@ p5(1) = 12.0
 
 
 EDGE CASES : 
-Some of the edge cases are if a polynomial has all coefficients of 0. 
-Another edge case is, if a polynomial has a degree of 0, and the coefficient is 0.
+1. All coefficients are 0, the toString skips every coefficient because they're all zero.
+   0x^2 + 0x + 0, print nothing instead of p(x) = 0
+
+2. Derivative of a constant polynomial, the derivate should be 5' = 0, but the actual output is p'(x) =
+  proram doesn't crash but it produces an incorrect/empty representation.
+
+3. Derivative of a zero plynomial, output is p'(x) =, but the actual output should be 0.
+
+4. Substracting a polynomial from itself, the output is p - p =
+    my minus() method correctly creates {0,0,0} but my toString() method can't display the zero poylnomial
+
+5. Negative exponent in my constructor, it results in an indexOutOfBoundsException. Because the array index's cannot be negative.
 */
