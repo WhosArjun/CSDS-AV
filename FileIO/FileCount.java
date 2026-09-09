@@ -1,5 +1,4 @@
 package FileIO;
-
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.Scanner;
