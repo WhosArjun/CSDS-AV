@@ -90,6 +90,13 @@ class RecursiveSolutions {
      * Postcondition: Returns true if s[left..right] is a palindrome, false otherwise.
      */
    public static boolean isPalindrome(String s, int left, int right) {
+    if(left >= right){
+      return true;
+    }
+    if(s.charAt(left) != s.charAt(right)){
+      return false;
+    }
+    return isPalindrome(s, left+1, right-1);
    }
 
     /**
@@ -98,6 +105,10 @@ class RecursiveSolutions {
      * Postcondition: Returns the total of arr[index..arr.length-1].
      */
    public static int sumArray(int[] arr, int index) {
+    if(index == arr.length){
+      return 0;
+    }
+    return arr[index] + sumArray(arr, index+1);
    }
 
     /**
@@ -106,5 +117,9 @@ class RecursiveSolutions {
      * Postcondition: Returns the greatest integer k such that 2^k <= n.
      */
    public static int logBase2(int n) {
+    if(n == 1){
+      return 0;
+    }
+    return 1 + logBase2(n/2);
    }
 }
