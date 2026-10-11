@@ -10,6 +10,9 @@ public class RecursionMethods {
         System.out.println(twos(1234567890));
         System.out.println(powerOf3(27));
         System.out.println(reverseLong(1234567890));
+        base5(136);
+        System.out.println();
+        printWithCommas(1234567890);
     }
 
     public static double factorial(double a){
@@ -119,6 +122,31 @@ public class RecursionMethods {
     return reverseLongHelper(n/10, reversed * 10 + n%10);
    }
 
+   public static void base5(int n){
+    if(n==0){
+        return;
+    }
+    base5(n/5);
+    System.out.print(n%5);
+   }
 
+   public static void printWithCommas(int n){
+    if(n<1000){
+        System.out.print(n);
+    }
+    else{
+        printWithCommas(n/1000);
+        long remainder = n%1000;
+        if(n<10){
+            System.out.print("," + 0 + 0 + remainder);
+        }
+        else if(n<100){
+            System.out.print("," + 0 + remainder);
+        }
+        else{
+            System.out.print("," + remainder);
+        }
+    }
+   }
 
 }
