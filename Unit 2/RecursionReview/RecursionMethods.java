@@ -38,6 +38,13 @@ public class RecursionMethods {
         System.out.println(xlsh("dude", "duke"));
         System.out.println();
         reverseWordInAStringWithSplitString("The cat is running");
+        System.out.println();
+        reverseWord2("Hello");
+        System.out.println();
+        System.out.println(division(27,3));
+        System.out.println(power2(5,3));
+        System.out.println(factorial2(6));
+
     }
 
     public static double factorial(double a){
@@ -419,6 +426,14 @@ public class RecursionMethods {
     }
    }
 
+   public static void reverseWord2(String word){
+    if(word.length() == 1){
+        System.out.print(word);
+        return;
+    }
+    reverseWord2(word.substring(1));
+    System.out.print(word.substring(0,1));
+   }
 
    public static boolean xlsh(String word1, String word2){
     
@@ -435,11 +450,7 @@ public class RecursionMethods {
         }
     }
 
-    
-        
-   }
-
-   /* 
+    /* 
    public static boolean xlshHelper(String word1, String word2, boolean isTrue){
     if(word1.length() == 0){
         return true;
@@ -459,6 +470,39 @@ public class RecursionMethods {
     }
    }
     */
+
+        
+   }
+
+   public static double multiply2(double n, double b){
+        if(b==1){
+            return n;
+        }
+        return n + multiply(n, b-1);
+    }
+
+    public static int division(int n, int b){
+        if(n<b){
+            return 0;
+        }
+        return 1 + division(n-b, b);
+    }
+    
+    public static double power2(double a, double b){
+        if(b==1){
+            return a;
+        }
+        return a * power2(a, b-1);
+    }
+
+    public static double factorial2(double n){
+        if(n==1){
+            return n;
+        }
+        return n * factorial(n-1);
+    }
+
+   
 }
 
 
