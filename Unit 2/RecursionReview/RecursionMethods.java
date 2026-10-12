@@ -25,6 +25,10 @@ public class RecursionMethods {
         System.out.println();
         System.out.println(isPallindrome("racecar"));
         System.out.println(isPallindrome("HelloolleH"));
+        int[] arr2 = {6,7,6,7,6,7};
+        printRecur(arr2, 1);
+        System.out.println();
+        System.out.println(sumArray(arr2));
     }
 
     public static double factorial(double a){
@@ -288,6 +292,29 @@ public class RecursionMethods {
         else{
             return false;
         }
+    }
+   }
+
+   public static void printRecur(int[] arr, int index){
+    if(index == arr.length - 1){
+        System.out.print(arr[index]);
+        return;
+    }
+    System.out.print(arr[index]);
+    printRecur(arr, index+1);
+   }
+
+   public static int sumArray(int[] arr){
+    return sumArrayHelper(arr, 0, 0);
+   }
+   public static int sumArrayHelper(int[] arr, int index, int total){
+    if(index == arr.length -1){
+        total+= arr[index];
+        return total;
+    }
+    else{
+        total+=arr[index];
+        return sumArrayHelper(arr, index+1, total);
     }
    }
 
