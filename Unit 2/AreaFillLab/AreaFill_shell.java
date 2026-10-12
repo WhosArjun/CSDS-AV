@@ -1,3 +1,20 @@
+/*
+Name : Arjun Arunkumar
+Period 1 
+Teacher : Edmund Lau
+Date : 10/12/2026 Due Date : 10/13/2026
+Lab Name : Area Fill Lab
+Who Helped : No one
+Who did I help : No one
+What did I learn : How to handle 2d array edge cases and base cases, such as index out of bound errors.
+What did I struggle with : I struggled a little bit on handling the index out of bounds errors, but then I realized I could just escape a return statement by handling the row and column index out of bound errors at the start.
+What did I improve : I improved on expanding my recursion skills, by starting with an easy exhaustive search and building up to utilizing exhaustive search through text files and 2d arrays.
+I enjoyed this lab a lot!
+
+
+*/
+
+
 import java.util.Scanner;
 import java.io.*;
  public class AreaFill_shell
@@ -73,3 +90,30 @@ import java.io.*;
       fillHelper(g, r, c-1, ch, fillChar);
    }
  }
+
+/*
+OUTPUT : 
+Filename : area2
+..........00
+...0....0000
+...000000000
+0000.....000 
+............
+..#########.
+..#...#####.
+......#####.
+...00000....
+
+Enter ROW COL to fill from: 1 2
+What is your fillChar
+*
+**********00
+***0****0000
+***000000000
+0000.....000 
+............
+..#########.
+..#...#####.
+......#####.
+...00000....
+ */
