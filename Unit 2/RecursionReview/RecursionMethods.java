@@ -32,6 +32,7 @@ public class RecursionMethods {
         System.out.println(found(arr2, 5));
         printHashtagAmount(5);
         printHashtagAmountBackward(1, 5);
+        System.out.println(elfish("Hello World"));
     }
 
     public static double factorial(double a){
@@ -369,6 +370,23 @@ public class RecursionMethods {
         System.out.println();
         printHashtagAmountBackward(iteration+1, amount);
     }
+   }
+
+   public static boolean elfish(String word){
+    boolean eFound = false;
+    boolean fFound = false;
+    boolean lFound = false;
+    return elfishHelper(word, eFound, fFound, lFound);
+   }
+   public static boolean elfishHelper(String word, boolean eFound, boolean fFound, boolean lFound){
+    if(eFound == true && fFound == true && lFound == true){
+        return true;
+    }
+    if(word.length() == 0){
+        return false;
+    }
+    char firstChar = word.charAt(0);
+    return elfishHelper(word.substring(1), eFound || firstChar == 'e', fFound || firstChar == 'f', lFound || firstChar == 'l');
    }
 }
 
