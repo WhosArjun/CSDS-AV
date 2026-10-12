@@ -13,6 +13,18 @@ public class RecursionMethods {
         base5(136);
         System.out.println();
         printWithCommas(1234567890);
+        System.out.println();
+        reverseLongString(1234567890);
+        reverseLongStringWithCommas(1234567890);
+        System.out.println();
+        printIntegerBackwards(67);
+        System.out.println();
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        System.out.println(maxValueInAnArray(arr));
+        printContentOf1DArrayBackwards(arr);
+        System.out.println();
+        System.out.println(isPallindrome("racecar"));
+        System.out.println(isPallindrome("HelloolleH"));
     }
 
     public static double factorial(double a){
@@ -122,6 +134,16 @@ public class RecursionMethods {
     return reverseLongHelper(n/10, reversed * 10 + n%10);
    }
 
+   public static void reverseLongString(long n){
+    if(n<10){
+        System.out.print(n);
+    }
+    else{
+        System.out.print(n%10);
+        reverseLongString(n/10);
+    }
+   }
+
    public static void base5(int n){
     if(n==0){
         return;
@@ -145,6 +167,126 @@ public class RecursionMethods {
         }
         else{
             System.out.print("," + remainder);
+        }
+    }
+   }
+
+   public static void printLongWithCommas(long n){
+    if(n<1000){
+        System.out.print(n);
+    }
+    else{
+        printLongWithCommas(n/1000);
+        long remainder = n%1000;
+        if(n<10){
+            System.out.print("," + 0 + 0 + remainder);
+        }
+        else if(n<100){
+            System.out.print("," + 0 + remainder);
+        }
+        else{
+            System.out.print("," + remainder);
+        }
+    }
+   }
+
+   public static void reverseLongStringWithCommas(long n){
+    long a = reverseLong(n);
+    System.out.println();
+    printLongWithCommas(a);
+   }
+
+   public static void printIntegerBackwards(int n){
+    if(n<10){
+        System.out.print(n);
+    }
+    else{
+        System.out.print(n%10);
+        printIntegerBackwards(n/10);
+    }
+   }
+
+   public static int maxValueInAnArray(int[] arr){
+    return maxValueInArrayHelper(arr, 0, 0);
+   }
+   public static int maxValueInArrayHelper(int[] arr, int index, int max){
+    if(index == arr.length-1){
+        if(arr[index] < max){
+            return arr[max];
+        }
+        else{
+            return arr[index];
+        }
+    }
+    else{
+        if(arr[max]<arr[index+1]){
+            return maxValueInArrayHelper(arr, index+1, index+1);
+        }
+        else{
+            return maxValueInArrayHelper(arr, index+1, max);
+        }
+    }
+   }
+
+   public static void printContentOf1DArrayBackwards(int[] arr){
+    printContentOf1DArrayBackwardsHelper(arr, 0);
+   }  
+   public static void printContentOf1DArrayBackwardsHelper(int[] arr, int index){
+     if(index == arr.length - 1){
+       System.out.print(arr[index]);
+     }
+     else{
+        printContentOf1DArrayBackwardsHelper(arr, index+1);
+        System.out.print(arr[index]);
+     }
+   }
+
+   public static boolean isPallindrome(String str){
+    String frontHalf = str.substring(0,str.length()/2);
+    String backHalf = str.substring(str.length()/2);
+   // int backHalfIndex = backHalf.length()-1;
+    int frontHalfIndex = 0;
+    if(str.length() % 2 == 1){
+        backHalf = backHalf.substring(1);
+    }
+
+    int backHalfIndex = backHalf.length()-1;
+
+    return isPallindromeHelper(backHalf, frontHalf, frontHalfIndex, backHalfIndex);
+   }
+   /* 
+   public static boolean isPallindromeHelper(String backHalf, String frontHalf, int index){
+    if(index == backHalf.length() - 1 && index == frontHalf.length() - 1){
+        if(backHalf.charAt(index) == frontHalf.charAt(index)){
+            return true;
+        }
+        return false;
+    }
+    else{
+        if(backHalf.charAt(index) == frontHalf.charAt(index)){
+            return isPallindromeHelper(backHalf, frontHalf, index+1);
+        }
+        else{
+            return false;
+        }
+    }
+   }
+    */
+   public static boolean isPallindromeHelper(String backHalf, String frontHalf, int frontHalfIndex, int backHalfIndex){
+    if(frontHalfIndex == frontHalf.length() -1){
+        if(frontHalf.charAt(frontHalfIndex) == backHalf.charAt(backHalfIndex)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        if(frontHalf.charAt(frontHalfIndex) == backHalf.charAt(backHalfIndex)){
+            return isPallindromeHelper(backHalf, frontHalf, frontHalfIndex+1, backHalfIndex-1);
+        }
+        else{
+            return false;
         }
     }
    }
