@@ -1,0 +1,66 @@
+At runtime, java maintains a stack that contains frames for all method calls that are being executed but not completed
+A frame stores information about a method call, including local variables, parameters, and return information
+When a method is called, Java pushes a new stack frame onto the stack
+public static void main(String[] args){
+    int x = 5;
+    int result = doubleIt(x);
+    System.out.print(result);
+}
+public static int doubleIt(int n){
+    return n*2;
+}
+When java starts, main is running. Java creates a stack frame for main, which stores information about its local variables such as a x and result
+The main calls doubleIt(5), java creates a new frame for doubleIt, with its parameter n=5
+
+When doubleIt returns 10, its frame is removed from the stack. The returned value is used by main, which assign 10 to result.
+Stack Frame : The information java keeps for one particular method call
+
+Push and Pop in stack frames : 
+Push : Add something to the top
+Pop : Remove something from the top of the stack
+
+For method calls : 
+    Java creates and pushes a frame
+    It assign argument values to the parameters
+    It executes the method
+    When the method finishes, Java pops its frame
+    If the method returns a value, that values goes back to the code that called it
+
+    LIFO : Last in first out, the last method call to be added is the first one to finish
+    Recursion, the first call might have to wait for several other calls to finish before it can return
+
+HEAP : 
+Heap space in java is used for dynamic memory allocation for java objects at runtime, objects are created in heap space, and references to these objects are stored in stack memory,
+when those references are local variables or parameters.
+
+int number = 10;
+String word = new String("Hello");
+number is a primitive int; its value is stored in the method' local storage, word is a reference variable, it refers to a String object stored on the heap 
+Stack frame                      Heap 
+-----------                      ----
+number = 10                      String object - "Hello"
+word -> Reference 
+
+Reference means word is pointing to the object
+
+public static void countDown(int n){
+    if(n==0){
+        return;
+    }
+    countDown(n-1);
+}
+if you call countDown(3), java creates seperate frames for countDown(3), (2), (1), and (0)
+
+
+public static int sum(int n){
+    if(n<10){
+        return n;
+    }
+    return sum(n/10) + n%10;
+}
+public static void main(String[] args){
+    int r = sum(824);
+    System.out.print(r);
+}
+when main calls sum(824), java creates a new stack frame for sum, where n = 824;
+the variable r cannot receive the final answer yet because sum(824) hasnt returned 

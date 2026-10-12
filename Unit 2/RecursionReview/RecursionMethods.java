@@ -29,6 +29,9 @@ public class RecursionMethods {
         printRecur(arr2, 1);
         System.out.println();
         System.out.println(sumArray(arr2));
+        System.out.println(found(arr2, 5));
+        printHashtagAmount(5);
+        printHashtagAmountBackward(1, 5);
     }
 
     public static double factorial(double a){
@@ -318,4 +321,55 @@ public class RecursionMethods {
     }
    }
 
+   public static boolean found(int[] arr, int target){
+    return foundHelper(arr, target, 0);
+   }
+   public static boolean foundHelper(int[] arr, int target, int index){
+    if(index == arr.length -1){
+        if(arr[index] == target){
+            return true;
+        }
+        return false;
+    }
+    else{
+        if(arr[index] == target){
+            return true;
+        }
+        else{
+            return foundHelper(arr, target, index +1);
+        }
+    }
+   }
+
+   public static void printHashtagAmount(int amount){
+    if(amount == 0){
+        return;
+    }
+    else{
+        int i = 0;
+        while(i<amount){
+            System.out.print("#");
+            i++;
+        }
+        System.out.println();
+        printHashtagAmount(amount-1);
+    }
+   }
+
+   public static void printHashtagAmountBackward(int iteration ,int amount){
+    if(iteration>amount){
+        return;
+    }
+    else{
+        int i = 0;
+        while(i<iteration){
+            System.out.print("#");
+            i++;
+        }
+        System.out.println();
+        printHashtagAmountBackward(iteration+1, amount);
+    }
+   }
 }
+
+
