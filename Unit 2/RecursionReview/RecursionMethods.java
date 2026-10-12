@@ -33,6 +33,11 @@ public class RecursionMethods {
         printHashtagAmount(5);
         printHashtagAmountBackward(1, 5);
         System.out.println(elfish("Hello World"));
+        reverseWordInAString("The cat is running");
+        System.out.println();
+        System.out.println(xlsh("dude", "duke"));
+        System.out.println();
+        reverseWordInAStringWithSplitString("The cat is running");
     }
 
     public static double factorial(double a){
@@ -388,6 +393,72 @@ public class RecursionMethods {
     char firstChar = word.charAt(0);
     return elfishHelper(word.substring(1), eFound || firstChar == 'e', fFound || firstChar == 'f', lFound || firstChar == 'l');
    }
+
+   public static void reverseWordInAString(String word){
+    if(word.indexOf(" ") == -1){
+        System.out.print(word + " ");
+        return;
+    }
+   
+        reverseWordInAString(word.substring(word.indexOf(" ") + 1)); //The cat is running
+        System.out.print(word.substring(0, word.indexOf(" ")) + " ");
+    
+   }
+
+   public static void reverseWordInAStringWithSplitString(String word){
+    String[] words = word.split(" ");
+    reverseWordInAStringWithSplitStringHelper(word, words, 0);
+   }
+   public static void reverseWordInAStringWithSplitStringHelper(String word, String[] words, int index){
+    if(index == words.length-1){   //Base case if statement
+        System.out.print(words[index] + " ");
+    }
+    else{    //Instead of adding the else statement you could also add a return statement in the base case if statement
+        reverseWordInAStringWithSplitStringHelper(word, words, index+1);
+        System.out.print(words[index] + " ");
+    }
+   }
+
+
+   public static boolean xlsh(String word1, String word2){
+    
+    if(word1.length() == 0){
+        return true;
+    }
+    else{
+        char currChar = word1.charAt(0);
+        if(word2.indexOf(currChar) == -1){
+            return false;
+        }
+        else{
+            return xlsh(word1.substring(1), word2);
+        }
+    }
+
+    
+        
+   }
+
+   /* 
+   public static boolean xlshHelper(String word1, String word2, boolean isTrue){
+    if(word1.length() == 0){
+        return true;
+    }
+    else{
+        int i = 0;
+        char currChar = word1.charAt(0);
+        while(i<word2.length()){
+            if(currChar != word2.charAt(i)){
+                isTrue = false;
+            }
+            if(currChar == word2.charAt(i)){
+                isTrue = true;
+            }
+            i++;
+        }
+    }
+   }
+    */
 }
 
 
