@@ -44,6 +44,7 @@ public class RecursionMethods {
         System.out.println(division(27,3));
         System.out.println(power2(5,3));
         System.out.println(factorial2(6));
+        printWithCommas2(676767676);
 
     }
 
@@ -500,6 +501,25 @@ public class RecursionMethods {
             return n;
         }
         return n * factorial(n-1);
+    }
+
+    public static void printWithCommas2(long n){
+        if(n<1000){
+            System.out.print(n);
+        }
+        else{
+            long remainder = n%1000;
+            printWithCommas2(n/1000);
+            if(remainder<10){
+                System.out.print("," + "00" + remainder);
+            }
+            else if(remainder<100){
+                System.out.print("," + "0" + remainder);
+            }
+            else{
+                System.out.print("," + remainder);
+            }
+        }
     }
 
    
