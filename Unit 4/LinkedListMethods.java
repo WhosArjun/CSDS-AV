@@ -24,6 +24,8 @@ public class LinkedListMethods{
         System.out.println();
         ListNode<String> newHead2 = insertLast(head, "insertedLast");
         printList(newHead2);
+        System.out.println();
+        printListAgain(head);
     }
     
 
@@ -88,5 +90,69 @@ public class LinkedListMethods{
         }
         ListNode<String> head = new ListNode<>(current.getValue(), insertLast(current.getNext(), value));
         return head;
+    }
+
+    //Print list but this time the methods base case is when the argument is null instead of when the next node is null
+    public static void printListAgain(ListNode<String> argument){
+        if(argument == null){
+            return;
+        }
+        System.out.print(argument.getValue() + " ");
+        printListAgain(argument.getNext());
+    }
+
+    //Inserts the value in an ORDERED linked list
+    public static <E extends Comparable<E>> ListNode<E> insertInOrder(ListNode<E> argument, E value){
+        if(argument == null || argument.getValue().compareTo(value) > 0){
+            return new ListNode<>(value, argument);
+        }
+        argument.setNext(insertInOrder(argument.getNext(), value));
+        return argument;
+    }
+
+
+    //Inserts the value at a particular index (doesn't matter whether the linked list is ordered or not)
+    public static <E> ListNode<E> insertAtParticularIndex(ListNode<E> argument, E value, int index){
+        if(argument == null){
+            return null;
+        }
+        if(index == 0){
+            return new ListNode<>(value, argument);
+        }
+        argument.setNext(insertAtParticularIndex(argument.getNext(), value, index-1));
+        return argument;
+    }
+
+    public static <E> ListNode<E> remove(ListNode<E> argument, int index){
+        if(argument == null){
+            return null;
+        }
+        if(index == 0){
+            return argument.getNext();
+        }
+        argument.setNext(remove(argument.getNext(), index-1));
+        return argument;
+    }
+
+    public static <E> ListNode<E> removeValue(ListNode<E> argument, E value){
+        if(argument == null){
+            return null;
+        }
+        if(argument.getValue().equals(value)){
+            return argument.getNext();
+        }
+        argument.setNext(removeValue(argument.getNext(), value));
+        return argument;
+    }
+
+    public static <E> ListNode<E> removeAllOccuronces(ListNode<E> argument, E value){
+        if(argument == null){
+            return null;
+        }
+        if(argument.getValue().equals(value)){
+            return removeAllOccuronces(argument.getNext(), value);
+        }
+        argument.setNext(removeAllOccuronces(argument.getNext(), value));
+        return argument;
     }
 }
