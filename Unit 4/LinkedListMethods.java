@@ -155,4 +155,23 @@ public class LinkedListMethods{
         argument.setNext(removeAllOccuronces(argument.getNext(), value));
         return argument;
     }
+
+    public static <E> int length(ListNode<E> argument){
+        if(argument == null){
+            return 0;
+        }
+        return 1 + length(argument.getNext());
+    }
+
+    public static <E> ListNode<E> lookup(ListNode<E> argument, E value){
+        if(argument == null){
+            return null;
+        }
+        if(argument.getValue().equals(value)){
+            return argument;
+        }
+        return lookup(argument.getNext(), value);
+    }
+
+
 }
